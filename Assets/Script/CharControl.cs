@@ -1,12 +1,15 @@
+using System.Data.Common;
 using Unity.Netcode;
 using UnityEngine;
 
 public class CharControl : NetworkBehaviour
 {
     [SerializeField] private InputReader inputReader;
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed;
 
     private Vector2 moveInput;
+
+
 
    public override void OnNetworkSpawn()
 {
@@ -62,6 +65,7 @@ public override void OnNetworkDespawn()
     [ServerRpc]
     private void MoveServerRpc(Vector2 input)
     {
+    
         Vector3 forward = transform.forward;
         Vector3 right = transform.right;
 
